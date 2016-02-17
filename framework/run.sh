@@ -12,4 +12,4 @@ fi
 
 source ~/.drillTestConfig
 
-mvn exec:java -Djava.security.auth.login.config=/opt/mapr/conf/mapr.login.conf -Dzookeeper.sasl.client=false -Dexec.mainClass="org.apache.drill.test.framework.TestDriver" -Dexec.args="$*" -Dexec.classpathScope=compile
+mvn exec:exec -Djava.security.auth.login.config=/opt/mapr/conf/mapr.login.conf -Dzookeeper.sasl.client=false -Dexec.classpathScope=compile -Dexec.executable="java" -Dexec.args="-classpath %classpath -Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=y,address=1044 org.apache.drill.test.framework.TestDriver $*"
